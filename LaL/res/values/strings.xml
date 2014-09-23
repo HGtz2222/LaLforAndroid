@@ -8,10 +8,11 @@
     <string name="lvl1">小撸怡情</string>
     <string name="lvl2">大撸伤身</string>
     <string name="lvl3">强撸......</string>
-    <string name="start">搞起!!</string>
-    <string name="tips">Tips</string>
+    <string name="start">点我搞起!!</string>
+    <string name="tips">在有限的时间里, &#x000D;尽情LaL吧!</string>
     <string name="default_num">0</string>
     <string name="result_tip">Game Over!</string>
-    <string name="result_label">"LaL分数: "</string>
+    <string name="result_label">"分数: "</string>
+    <string name="return_main">点我返回</string>
 
 </resources>

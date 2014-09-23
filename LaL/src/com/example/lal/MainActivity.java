@@ -26,14 +26,21 @@ public class MainActivity extends Activity {
 				Button btn = (Button)view;
 				Intent intent = new Intent(MainActivity.this, Tips.class);
 				if (btn.getId() == R.id.btn_lvl1){
-					intent.putExtra("time", 5);
+					intent.putExtra("time", 5000);
 				}
-				// TODO 挂接其他按钮
+				if (btn.getId() == R.id.btn_lvl2){
+					intent.putExtra("time", 10000);
+				}
+				if (btn.getId() == R.id.btn_lvl3){
+					intent.putExtra("time", 50000);
+				}
 				startActivity(intent);
 			}
 			
 		};
 		btn_lvl1.setOnClickListener(listener);
+		btn_lvl2.setOnClickListener(listener);
+		btn_lvl3.setOnClickListener(listener);
 	}
 
 	@Override

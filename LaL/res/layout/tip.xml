@@ -11,7 +11,8 @@
         android:layout_weight="10"
         android:gravity="center"
         android:text="@string/tips"
-        android:textColor="@color/textColor" />
+        android:textColor="@color/textColor" 
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/btn_start"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/myBtn"
-        android:text="@string/start" />
+        android:text="@string/start"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/btn_space"

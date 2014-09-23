@@ -5,15 +5,15 @@
     android:background="@color/myYellow" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/screenTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/myBtn"
+        android:gravity="bottom"
         android:text="@string/result_label"
         android:textColor="@color/textColor"
-        android:textSize="40sp"
-        android:gravity="bottom" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/resultScreen"
@@ -25,5 +25,15 @@
         android:textColor="@color/textColor"
         android:textSize="60sp" 
         android:layout_weight="10"/>
+
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/return_main"
+        android:textColor="@color/textColor" 
+        android:background="@color/myBtn"
+        android:textSize="20sp" />
 
 </LinearLayout>

@@ -27,7 +27,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity android:name="com.example.lal.Tips"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
-        <activity android:name="com.example.lal.result"
+        <activity android:name="com.example.lal.ResultActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
     </application>
 

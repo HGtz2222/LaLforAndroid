@@ -9,13 +9,14 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 public class DoLaL extends Activity{
 	
 	private TextView screen;
 	private SensorEventListener listener;
-	private int count = 0;
+	private int lalCount = 0;
 	private SensorManager sm;
 	private Sensor s;
 	private Thread stopThread;
@@ -44,7 +45,11 @@ public class DoLaL extends Activity{
 				super.run();
 				
 				try {
-					Thread.sleep(time);
+					while(time > 0){
+						// 设置剩余时间;
+						Thread.sleep(1000);
+						time -= 1000;
+					}
 					Log.e("tz", "Finish--------------");
 					calcResult();
 				} catch (InterruptedException except) {
@@ -80,8 +85,8 @@ public class DoLaL extends Activity{
 					float total = event.values[0] * event.values[0] + event.values[1] * event.values[1] + (event.values[2] - 9.8f) * (event.values[2] - 9.8f); 
 					//Log.e("tz", "totalAcce: " + total);
 					if (total > 200.0f){
-						count ++;
-						screen.setText("" + (count / 2));
+						lalCount ++;
+						screen.setText("" + (lalCount / 2));
 					}
 				}
 			}
@@ -92,10 +97,10 @@ public class DoLaL extends Activity{
 	private void calcResult(){
 		// 1. 将结果保存, 发送给结果resultActivity;
 		Intent intent = new Intent(DoLaL.this, ResultActivity.class);
-		intent.putExtra("result", count);
+		intent.putExtra("result", lalCount);
 		startActivity(intent);
 		// 2. 终结当前的Activity;
-		//finish();
+		finish();
 	}
 	
 	@Override
@@ -136,6 +141,22 @@ public class DoLaL extends Activity{
 	protected void onStop() {
 		super.onStop();
 		Log.e("tz", "DoLaL onStop");
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		Log.e("tz", "onKeyDown");
+		return true;
+	}
+
+	@Override
+	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+		return true;
+	}
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		return true;
 	}
 
 

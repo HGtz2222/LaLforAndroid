@@ -12,12 +12,11 @@ public class Tips extends Activity{
 	private int time = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tip);
 		
 		Intent intent = getIntent();
-		time  = intent.getIntExtra("time", 5);
+		time  = intent.getIntExtra("time", 5000);
 		Log.e("tz", "运行时间: " + time);
 		
 		start = (Button)findViewById(R.id.btn_start);
@@ -26,6 +25,7 @@ public class Tips extends Activity{
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(Tips.this, DoLaL.class);	
+				intent.putExtra("time", time);
 				startActivity(intent);
 				finish();
 			}

@@ -27,7 +27,9 @@
         android:layout_height="wrap_content"
         android:text="@string/lvl1" 
         android:layout_weight="1"
-        android:background="@color/myBtn"/>
+        android:background="@color/myBtn"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"/>
 
     <Button
         android:id="@+id/btn_lvl2"
@@ -36,7 +38,8 @@
         android:text="@string/lvl2"
         android:layout_weight="1"
         android:background="@color/myBtn" 
-        />
+        android:textSize="20sp"
+        android:textColor="@color/textColor"/>
 
     <Button
         android:id="@+id/btn_lvl3"
@@ -44,6 +47,8 @@
         android:layout_height="wrap_content"
         android:text="@string/lvl3"
         android:layout_weight="1" 
-        android:background="@color/myBtn" />
+        android:background="@color/myBtn"
+        android:textSize="20sp"
+        android:textColor="@color/textColor" />
 
 </LinearLayout>
