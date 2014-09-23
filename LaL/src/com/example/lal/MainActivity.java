@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
 	private Button btn_lvl2;
 	private Button btn_lvl3;
 	
-	private void initCtrl(){
+	private void initUI(){
 		btn_lvl1 = (Button)findViewById(R.id.btn_lvl1);
 		btn_lvl2 = (Button)findViewById(R.id.btn_lvl2);
 		btn_lvl3 = (Button)findViewById(R.id.btn_lvl3);
@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				Button btn = (Button)view;
-				Intent intent = new Intent(MainActivity.this, DoLaL.class);
+				Intent intent = new Intent(MainActivity.this, Tips.class);
 				if (btn.getId() == R.id.btn_lvl1){
 					intent.putExtra("time", 5);
 				}
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		initCtrl();
+		initUI();
 		initListener();
 	}
 
