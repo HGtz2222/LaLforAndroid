@@ -15,16 +15,14 @@
         android:textColor="@color/textColor"
         android:textSize="40sp" />
 
-    <TextView
+    <ImageView
         android:id="@+id/resultScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
-        android:background="@color/myBtn"
-        android:gravity="center"
-        android:text="TODO"
-        android:textColor="@color/textColor"
-        android:textSize="30sp" />
+        android:src="@drawable/wan_e"
+        android:scaleType="centerInside"
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/bottomLayout"
