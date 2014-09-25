@@ -3,11 +3,14 @@ package com.example.lal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
@@ -15,17 +18,19 @@ import android.widget.TextView;
 public class DoLaL extends Activity{
 	
 	private TextView screen;
+	private TextView screenTime;
 	private SensorEventListener listener;
 	private int lalCount = 0;
 	private SensorManager sm;
 	private Sensor s;
-	private Thread stopThread;
+	private Thread timerThread;
+	private Boolean timerThreadPauseFlag = false;
 	private int time = 0;
-	
-	// TODO 屏蔽按键, 防止跳出界面; 
+	private MessageHandler messageHandler;
 	
 	private void initUI(){
 		screen = (TextView)findViewById(R.id.screen);
+		screenTime = (TextView)findViewById(R.id.scoreScreen);
 	}
 	
 	private void initSensor(){
@@ -33,32 +38,46 @@ public class DoLaL extends Activity{
 		s = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 	}
 	
-	private void initStopThread() {
+	private void initMessageHandler(){
+		Looper looper = Looper.myLooper();
+		messageHandler = new MessageHandler(this, looper);
+	}
+	
+	private void initTimerThread() {
 		Intent intent = getIntent();
 		time = intent.getIntExtra("time", 5000);
 		Log.e("tz", "DoLaL time: " + time);
 		
-		stopThread = new Thread(){
+		timerThread = new Thread(){
 
 			@Override
 			public void run() {
 				super.run();
-				
 				try {
+					// 震动提示开使
+					Ring.ring(DoLaL.this);
 					while(time > 0){
-						// 设置剩余时间;
+						if (timerThreadPauseFlag){
+							Thread.sleep(1000);
+							continue;
+						}
+						// 通过发送消息, 设置剩余时间;
+						Message message = Message.obtain();
+						message.what = time;
+						messageHandler.sendMessage(message);
 						Thread.sleep(1000);
 						time -= 1000;
 					}
 					Log.e("tz", "Finish--------------");
 					calcResult();
+					Ring.ring(DoLaL.this); // 震动提示结束; 
 				} catch (InterruptedException except) {
 					Log.e("tz", except.getMessage());
 				}
 			}
 			
 		};
-		stopThread.start();
+		timerThread.start();
 	}
 	
 	private void RegisterSensor(){
@@ -86,7 +105,7 @@ public class DoLaL extends Activity{
 					//Log.e("tz", "totalAcce: " + total);
 					if (total > 200.0f){
 						lalCount ++;
-						screen.setText("" + (lalCount / 2));
+						screen.setText("" + lalCount);
 					}
 				}
 			}
@@ -111,17 +130,17 @@ public class DoLaL extends Activity{
 		initUI();
 		initSensor();
 		initListener();
-		initStopThread();
+		initMessageHandler();
+		initTimerThread();
 		
 		RegisterSensor();	// 别忘记注册Listener!
 	}
-
-
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		UnRegisterSensor();
+		timerThreadPauseFlag = true;
 		Log.e("tz", "DoLaL onDestroy");
 	}
 
@@ -129,6 +148,7 @@ public class DoLaL extends Activity{
 	protected void onResume() {
 		super.onResume();
 		RegisterSensor();
+		timerThreadPauseFlag = false;
 	}
 
 	@Override
@@ -159,5 +179,9 @@ public class DoLaL extends Activity{
 		return true;
 	}
 
-
+	public void refreshTime(int time){
+		Resources resource = getResources();
+		String timeStr = resource.getString(R.string.time_str);
+		screenTime.setText(timeStr + time + "s");
+	}
 }

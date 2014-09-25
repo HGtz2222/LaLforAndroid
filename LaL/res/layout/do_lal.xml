@@ -5,18 +5,23 @@
     android:background="@color/myYellow" >
 
     <TextView
-        android:id="@+id/screenTime"
+        android:id="@+id/scoreScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text=""
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
+        android:layout_weight="1" 
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:hint="@string/default_num"
         android:textColor="@color/textColor"
-        android:textSize="60sp" />
+        android:textSize="60sp"
+        android:layout_weight="10" />
 
 </LinearLayout>

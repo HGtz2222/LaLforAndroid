@@ -13,6 +13,9 @@
     <string name="default_num">0</string>
     <string name="result_tip">Game Over!</string>
     <string name="result_label">"分数: "</string>
-    <string name="return_main">点我返回</string>
+    <string name="return_main">不割</string>
+    <string name="time_str">时间: </string>
+    <string name="share">割了</string>
+    <string name="score">分数:  </string>
 
 </resources>

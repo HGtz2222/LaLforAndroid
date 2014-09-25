@@ -2,13 +2,18 @@ package com.example.lal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ResultActivity extends Activity{
 
-	private TextView resultScreen;
+	private TextView scoreScreen;
+	private Button btn_return;
+	private Button btn_share;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +21,35 @@ public class ResultActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
 		
-		resultScreen = (TextView)findViewById(R.id.resultScreen);
+		scoreScreen = (TextView)findViewById(R.id.scoreScreen);
 		
 		Intent intent = getIntent();
 		int count = intent.getIntExtra("result", 0);
-		resultScreen.setText("" + count);
+		Resources rs = getResources();
+		scoreScreen.setText(rs.getString(R.string.score) + count);
+		
+		btn_return = (Button)findViewById(R.id.btn_return);
+		btn_share = (Button)findViewById(R.id.btn_share);
+		
+		btn_return.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View view) {
+				finish();
+				Log.e("tz", "Return main menu");
+			}
+			
+		});
+		
+		btn_share.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View view) {
+				// TODO ∑÷œÌµΩŒ¢–≈
+				Log.e("tz", "Share to WeiXin");
+			}
+			
+		});
 	}
 
 }
