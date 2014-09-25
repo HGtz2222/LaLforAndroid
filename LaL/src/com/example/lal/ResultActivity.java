@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends Activity{
 
@@ -47,6 +49,9 @@ public class ResultActivity extends Activity{
 			public void onClick(View view) {
 				// TODO 分享到微信
 				Log.e("tz", "Share to WeiXin");
+				Toast toast = Toast.makeText(ResultActivity.this, "玩命研发中, 敬请期待!", Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
 			}
 			
 		});
