@@ -54,8 +54,6 @@ public class DoLaL extends Activity{
 			public void run() {
 				super.run();
 				try {
-					// 震动提示开使
-					Ring.ring(DoLaL.this);
 					while(time > 0){
 						if (timerThreadPauseFlag){
 							Thread.sleep(1000);
