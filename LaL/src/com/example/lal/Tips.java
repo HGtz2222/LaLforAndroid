@@ -39,7 +39,7 @@ public class Tips extends Activity{
 					//Log.e("tz", "value " + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
 					float total = event.values[0] * event.values[0] + event.values[1] * event.values[1] + (event.values[2] - 9.8f) * (event.values[2] - 9.8f); 
 					//Log.e("tz", "totalAcce: " + total);
-					if (total > 200.0f){
+					if (total > 150.0f){
 						startGame();
 					}
 				}
