@@ -30,7 +30,7 @@ public class DoLaL extends Activity{
 	
 	private void initUI(){
 		screen = (TextView)findViewById(R.id.screen);
-		screenTime = (TextView)findViewById(R.id.scoreScreen);
+		screenTime = (TextView)findViewById(R.id.timeScreen);
 	}
 	
 	private void initSensor(){
