@@ -4,6 +4,15 @@
     android:background="@color/myYellow"
     android:orientation="vertical" >
 
+    <LinearLayout
+	    android:id="@+id/adLayout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal"
+	    android:orientation="vertical">
+	</LinearLayout>
+    
+    
     <TextView
         android:id="@+id/scoreScreen"
         android:layout_width="match_parent"

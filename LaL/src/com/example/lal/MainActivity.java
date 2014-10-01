@@ -1,8 +1,10 @@
 package com.example.lal;
 
-import android.os.Bundle;
+import net.youmi.android.AdManager;
+import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +44,12 @@ public class MainActivity extends Activity {
 		btn_lvl2.setOnClickListener(listener);
 		btn_lvl3.setOnClickListener(listener);
 	}
-
+	
+	private void initAd(){
+		AdManager.getInstance(this).init("e5c8a138220da637", "e37cfe2d98e537a5", false);
+		//SpotManager.getInstance(this).loadSpotAds();// TODO 暂时关闭插屏广告; 
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +57,7 @@ public class MainActivity extends Activity {
 		
 		initUI();
 		initListener();
+		initAd(); 
 	}
 
 	@Override
@@ -58,5 +66,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
 }
