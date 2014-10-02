@@ -35,7 +35,7 @@ public class DoLaL extends Activity{
 	
 	private void initSensor(){
 		sm = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-		s = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		s = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
 	}
 	
 	private void initMessageHandler(){
@@ -96,12 +96,11 @@ public class DoLaL extends Activity{
 
 			@Override
 			public void onSensorChanged(SensorEvent event) {
-				if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+				if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION){
 					//Log.e("tz", "value " + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
-					//screen.setText("value " + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
-					float total = event.values[0] * event.values[0] + event.values[1] * event.values[1] + (event.values[2] - 9.8f) * (event.values[2] - 9.8f); 
+					float total = event.values[0] * event.values[0] + event.values[1] * event.values[1] + (event.values[2]) * (event.values[2]); 
 					//Log.e("tz", "totalAcce: " + total);
-					if (total > 150.0f){
+					if (total > 180.0f){
 						lalCount ++;
 						screen.setText("" + lalCount);
 					}
